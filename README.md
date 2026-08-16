@@ -1,3 +1,5 @@
+<img width="1080" height="2400" alt="screen task log" src="https://github.com/user-attachments/assets/bb1d6588-394b-4114-a339-ab0256d81491" />
+<img width="1080" height="2400" alt="screen sing" src="https://github.com/user-attachments/assets/bd2b47ff-38b6-45a7-a33a-03c04cf31787" />
 # first_project
 
 A new Flutter project.
