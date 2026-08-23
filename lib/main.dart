@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen/login_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Online Groceries App',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: const LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }
