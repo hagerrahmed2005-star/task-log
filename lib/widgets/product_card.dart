@@ -16,6 +16,9 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final bool isNetworkImage = imageUrl.startsWith('http://') || imageUrl.startsWith('https://');
+
     return Container(
       width: 150,
       padding: const EdgeInsets.all(12),
@@ -29,10 +32,19 @@ class ProductCard extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.contain,
-              ),
+              child: isNetworkImage
+                  ? Image.network(
+                      imageUrl,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.fastfood, size: 50, color: Colors.green),
+                    )
+                  : Image.asset(
+                      imageUrl,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.fastfood, size: 50, color: Colors.green),
+                    ),
             ),
           ),
           const SizedBox(height: 8),

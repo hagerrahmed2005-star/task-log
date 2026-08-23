@@ -40,11 +40,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  const Center(
-                    child: Icon(
-                      Icons.eco,
-                      size: 55,
-                      color: Color(0xFFF37A20),
+                
+                  Center(
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 55,
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -135,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                       },
                       child: const Text(
-                        'Sing Up',
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -160,7 +160,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Navigator.pop(context);
                         },
                         child: const Text(
-                          'Singup',
+                          'Log In',
                           style: TextStyle(
                             color: greenColor,
                             fontWeight: FontWeight.bold,

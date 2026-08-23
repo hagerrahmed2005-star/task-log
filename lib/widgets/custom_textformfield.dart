@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-    
+      crossAxisAlignment: CrossAxisAlignment.start, 
       children: [
         Text(
           labelText,
@@ -51,7 +51,7 @@ class CustomTextFormField extends StatelessWidget {
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: Color(0xFF53B175)),
             ),
-            suffixIcon: obscureText || onSuffixIconPressed != null
+            suffixIcon: onSuffixIconPressed != null
                 ? IconButton(
                     icon: Icon(
                       obscureText

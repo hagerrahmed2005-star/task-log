@@ -1,8 +1,9 @@
-
 import 'package:first_project/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/custom_textformfield.dart';
 import '../../validators.dart';
+import '../home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -15,12 +16,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
+
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     const greenColor = Color(0xFF53B175);
@@ -37,14 +40,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 30),
-                  const Center(
-                    child: Icon(
-                      Icons.eco,
-                      size: 55,
-                      color: Color(0xFFF37A20),
+                
+                  Center(
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 55,
                     ),
                   ),
-                  const SizedBox(height: 40),
+                 
                   const Text(
                     'Log In',
                     style: TextStyle(
@@ -86,7 +89,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Reset password feature coming soon!'),
+                          ),
+                        );
+                      },
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
@@ -111,7 +120,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // Login logic
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ),
+                          );
                         }
                       },
                       child: const Text(
@@ -145,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         child: const Text(
-                          'Sign Up', 
+                          'Sign Up',
                           style: TextStyle(
                             color: greenColor,
                             fontWeight: FontWeight.bold,

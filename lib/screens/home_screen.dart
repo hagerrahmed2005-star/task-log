@@ -11,46 +11,40 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  // قائمة بيانات العروض الحصرية (Exclusive Offer)
   final List<Map<String, String>> exclusiveOffers = [
     {
       'title': 'Organic Bananas',
       'subtitle': '7pcs, Price',
       'price': '\$4.99',
-      'imageUrl':
-          'https://img.freepik.com/free-vector/vector-ripe-yellow-banana-bunch-isolated-white-background_1284-45456.jpg',
+      'imageUrl': 'assets/images/apple.png', 
     },
     {
       'title': 'Red Apple',
       'subtitle': '1kg, Price',
       'price': '\$4.99',
-      'imageUrl':
-          'https://img.freepik.com/free-vector/fresh-red-apples-vector-illustration_1308-132338.jpg',
+      'imageUrl': 'assets/images/apple.png',
     },
     {
       'title': 'Bell Pepper Red',
       'subtitle': '1kg, Price',
       'price': '\$2.99',
-      'imageUrl':
-          'https://img.freepik.com/free-vector/red-bell-pepper-isolated_1308-115332.jpg',
+      'imageUrl': 'assets/images/apple.png',
     },
   ];
 
-  // قائمة بيانات الأكثر مبيعاً (Best Selling)
+
   final List<Map<String, String>> bestSelling = [
     {
       'title': 'Bell Pepper Red',
       'subtitle': '1kg, Price',
       'price': '\$4.99',
-      'imageUrl':
-          'https://img.freepik.com/free-vector/red-bell-pepper-isolated_1308-115332.jpg',
+      'imageUrl': 'assets/images/apple.png',
     },
     {
       'title': 'Ginger',
       'subtitle': '250g, Price',
       'price': '\$2.99',
-      'imageUrl':
-          'https://img.freepik.com/free-vector/fresh-ginger-root-isolated-white-background_1284-45451.jpg',
+      'imageUrl': 'assets/images/apple.png',
     },
   ];
 
@@ -79,14 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
 
-      // SingleChildScrollView هو المسؤول عن السكرول الرأسي للشاشة كلها
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // شريط البحث
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
@@ -106,26 +99,41 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 20),
 
-            // قسم Exclusive Offer
+          
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'assets/images/banner.png',
+                  width: double.infinity,
+                  height: 115,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(height: 25),
+
+          
             _buildSectionHeader('Exclusive Offer'),
             const SizedBox(height: 15),
 
-            // السكرول الأفقي لكروت Exclusive Offer
+    
             _buildHorizontalProductList(exclusiveOffers),
             const SizedBox(height: 25),
 
-            // قسم Best Selling
+        
             _buildSectionHeader('Best Selling'),
             const SizedBox(height: 15),
 
-            // السكرول الأفقي لكروت Best Selling
+      
             _buildHorizontalProductList(bestSelling),
             const SizedBox(height: 20),
           ],
         ),
       ),
 
-      // الشريط السفلي
+  
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
@@ -156,7 +164,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // الهيدر الخاص بكل قسم
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -179,12 +186,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // الـ Widget المسؤولة عن السكرول الأفقي للكروت
   Widget _buildHorizontalProductList(List<Map<String, String>> products) {
     return SizedBox(
       height: 230,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal, // تجعل الحركة أفقية يمين وشمال
+        scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(left: 16.0),
         itemCount: products.length,
