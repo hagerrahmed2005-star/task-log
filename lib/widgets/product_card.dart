@@ -22,28 +22,32 @@ class ProductCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: Colors.grey.shade200),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // صورة المنتج
           Expanded(
-            child: Center(child: Image.network(imageUrl, fit: BoxFit.contain)),
+            child: Center(
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
           const SizedBox(height: 8),
-          // اسم المنتج
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
-          // تفاصيل السعة/الوزن
+          const SizedBox(height: 2),
           Text(
             subtitle,
             style: const TextStyle(color: Colors.grey, fontSize: 12),
           ),
           const SizedBox(height: 12),
-          // السعر وزرار الإضافة
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -57,7 +61,7 @@ class ProductCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF53B175), // اللون الأخضر في Figma
+                  color: const Color(0xFF53B175),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.add, color: Colors.white, size: 18),
