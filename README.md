@@ -1,3 +1,6 @@
+![Uploading product screen.png…]()
+<img width="1080" height="2400" alt="accuont screen" src="https://github.com/user-attachments/assets/72821491-7765-41c2-a9d3-09f9cc01da7f" />
+<img width="1080" height="2400" alt="home screen" src="https://github.com/user-attachments/assets/bb22b509-a171-43bc-b76d-fb17ceee5bf9" />
 <img width="1080" height="2400" alt="screen task log" src="https://github.com/user-attachments/assets/bb1d6588-394b-4114-a339-ab0256d81491" />
 <img width="1080" height="2400" alt="screen sing" src="https://github.com/user-attachments/assets/bd2b47ff-38b6-45a7-a33a-03c04cf31787" />
 # first_project
