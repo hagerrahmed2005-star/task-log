@@ -1,4 +1,4 @@
-import 'package:first_project/signup_screen/signup_screen.dart';
+import 'package:first_project/screens/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/custom_textformfield.dart';
 import '../../validators.dart';
