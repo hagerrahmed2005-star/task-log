@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'screens/splash_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/order_accepted_screen.dart';
 import 'screens/login_screen/login_screen.dart';
 
 void main() {
@@ -10,10 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Online Groceries App',
-      home: LoginScreen(),
+      home: const SplashScreen(),
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/order_accepted': (context) => const OrderAcceptedScreen(),
+      },
     );
   }
 }
