@@ -8,7 +8,6 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-
   Map<String, bool> categories = {
     'Eggs': true,
     'Noodles & Pasta': false,
@@ -17,10 +16,10 @@ class _FilterScreenState extends State<FilterScreen> {
   };
 
   Map<String, bool> brands = {
-    'Individual Callection': false,
+    'Individual Collection': false,
     'Cocola': true,
     'Ifad': false,
-    'Kazi Farmas': false,
+    'Kazi Farms': false,
   };
 
   @override
@@ -61,10 +60,10 @@ class _FilterScreenState extends State<FilterScreen> {
           children: [
             Expanded(
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // قسم Categories
                     const Text(
                       'Categories',
                       style: TextStyle(
@@ -85,10 +84,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         },
                       );
                     }),
-
                     const SizedBox(height: 30),
-
-            
                     const Text(
                       'Brand',
                       style: TextStyle(
@@ -113,14 +109,16 @@ class _FilterScreenState extends State<FilterScreen> {
                 ),
               ),
             ),
-
-  
             SizedBox(
               width: double.infinity,
               height: 67,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  // إرجاع الفلاتر المحددة عند الإغلاق
+                  Navigator.pop(context, {
+                    'categories': categories,
+                    'brands': brands,
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF53B175),
@@ -144,7 +142,6 @@ class _FilterScreenState extends State<FilterScreen> {
       ),
     );
   }
-
 
   Widget _buildCheckboxRow({
     required String title,

@@ -15,12 +15,17 @@ class OrderAcceptedScreen extends StatelessWidget {
             children: [
               const Spacer(),
 
-              
+              // صورة علامة الصح والنجاح
               Image.asset(
                 'assets/images/true.png',
                 width: 269,
                 height: 240,
                 fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.check_circle_outline,
+                  size: 150,
+                  color: Color(0xFF53B175),
+                ),
               ),
 
               const SizedBox(height: 40),
@@ -36,6 +41,8 @@ class OrderAcceptedScreen extends StatelessWidget {
                 ),
               ),
 
+              const SizedBox(height: 15),
+
               const Text(
                 'Your items has been placed and is on\nit\'s way to being processed',
                 textAlign: TextAlign.center,
@@ -48,12 +55,14 @@ class OrderAcceptedScreen extends StatelessWidget {
 
               const Spacer(),
 
-          
+              // زر تتبع الطلب
               SizedBox(
                 width: double.infinity,
                 height: 67,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // التنقل لشاشة تتبع الطلب Track Order عند توفرها
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF53B175),
                     elevation: 0,
@@ -74,10 +83,11 @@ class OrderAcceptedScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-  
+              // زر الرجوع للشاشة الرئيسية
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  // العودة لأول شاشة في الـ Stack (الصفحة الرئيسية)
+                  Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15),

@@ -8,21 +8,18 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          
           Positioned.fill(
             child: Image.asset(
               'assets/images/onbording.png',
               fit: BoxFit.cover,
             ),
           ),
-
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-  
                   Image.asset(
                     'assets/images/Group 6840 (1).png',
                     height: 56,
@@ -33,10 +30,7 @@ class OnboardingScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-
                   const SizedBox(height: 15),
-
-                
                   const Text(
                     'Welcome\nto our store',
                     textAlign: TextAlign.center,
@@ -45,32 +39,30 @@ class OnboardingScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                       height: 1.1,
-                      fontFamily: 'Gilroy', 
+                      fontFamily: 'Gilroy',
                     ),
                   ),
-
                   const SizedBox(height: 8),
-
-      
                   const Text(
-                    'Ger your groceries in as fast as one hour',
+                    'Get your groceries in as fast as one hour',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
-                      color: Color(0xB3FCFCFC), 
+                      color: Color(0xB3FCFCFC),
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-
                   const SizedBox(height: 40),
-
-            
                   SizedBox(
                     width: double.infinity,
                     height: 67,
                     child: ElevatedButton(
                       onPressed: () {
-                    
+                        // التنقل للشاشة التالية وإزالة شاشة الـ Onboarding من الـ Stack
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        // );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF53B175),
@@ -89,7 +81,6 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 40),
                 ],
               ),

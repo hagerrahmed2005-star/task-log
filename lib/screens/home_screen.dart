@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen/product_detail_screen.dart'; 
 import 'account_screen.dart'; 
+import 'cart_screen.dart'; // تم إضافة استيراد شاشة السلة
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -49,11 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
-
   List<Widget> get _screens => [
         _buildMainHomeContent(), 
         const Center(child: Text('Explore Screen')), 
-        const Center(child: Text('Cart Screen')), 
+        const CartScreen(), // ربط شاشة السلة بتبويب Cart
         const Center(child: Text('Favourite Screen')), 
         const AccountScreen(), 
       ];
@@ -203,22 +203,29 @@ class _HomeScreenState extends State<HomeScreen> {
           final item = products[index];
           return Padding(
             padding: const EdgeInsets.only(right: 15.0),
-            child: GestureDetector(
+            child: ProductCard(
+              title: item['title']!,
+              subtitle: item['subtitle']!,
+              price: item['price']!,
+              imageUrl: item['imageUrl']!,
+              // عند الضغط على الكارت تفتح شاشة التفاصيل
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                
                     builder: (context) => const ProductDetailScreen(),
                   ),
                 );
               },
-              child: ProductCard(
-                title: item['title']!,
-                subtitle: item['subtitle']!,
-                price: item['price']!,
-                imageUrl: item['imageUrl']!,
-              ),
+              // عند الضغط على زر (+ ) تفتح شاشة السلة
+              onAddTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CartScreen(),
+                  ),
+                );
+              },
             ),
           );
         },

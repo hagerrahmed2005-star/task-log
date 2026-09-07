@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../widgets/product_card.dart';
+import 'product_detail_screen/product_detail_screen.dart';
+import 'cart_screen.dart';
 
 class BeveragesScreen extends StatelessWidget {
   const BeveragesScreen({super.key});
-
 
   final List<Map<String, dynamic>> products = const [
     {
@@ -18,13 +20,13 @@ class BeveragesScreen extends StatelessWidget {
       'image': 'assets/images/Group 6841.png',
     },
     {
-      'name': 'Apple & Grape\nJuice',
+      'name': 'Apple & Grape Juice',
       'volume': '2L, Price',
       'price': '\$15.99',
       'image': 'assets/images/Group 6843.png',
     },
     {
-      'name': 'Orenge Juice',
+      'name': 'Orange Juice',
       'volume': '2L, Price',
       'price': '\$15.99',
       'image': 'assets/images/Group 6845.png',
@@ -76,85 +78,33 @@ class BeveragesScreen extends StatelessWidget {
           itemCount: products.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.70,
+            childAspectRatio: 0.68,
             crossAxisSpacing: 15,
             mainAxisSpacing: 15,
           ),
           itemBuilder: (context, index) {
             final item = products[index];
-            return Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(
-                  color: const Color(0xFFE2E2E2),
-                  width: 1,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        item['image'],
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+            return ProductCard(
+              title: item['name'],
+              subtitle: item['volume'],
+              price: item['price'],
+              imageUrl: item['image'],
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProductDetailScreen(),
                   ),
-                  const SizedBox(height: 12),
-          
-                  Text(
-                    item['name'],
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                );
+              },
+              onAddTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CartScreen(),
                   ),
-                  const SizedBox(height: 4),
-        
-                  Text(
-                    item['volume'],
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF7C7C7C),
-                    ),
-                  ),
-                  const Spacer(),
-        
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        item['price'],
-                        style: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF53B175),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                );
+              },
             );
           },
         ),
